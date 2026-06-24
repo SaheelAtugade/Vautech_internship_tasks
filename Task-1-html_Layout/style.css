@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body{
+    background-color: #f5f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+header,
+section,
+footer{
+    width: min(820px, 92%);
+    /* width: 92%; */
+    margin: 0 auto;
+}
+
+header{
+    padding: 32px 0 18px;
+    text-align: center;
+}
+
+header h1{
+    color: #0f172a;
+}
+
+section{
+    background-color: #ffffff;
+    margin-bottom: 18px;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.hero{
+    text-align: center;
+}
+
+.hero img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 14px 0;
+}
+
+section h2{
+    margin-bottom: 10px;
+    color: #1d4ed8;
+}
+
+article {
+    margin-top: 16px;
+}
+
+ul,
+ol{
+    padding-left: 20px;
+}
+
+a{
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+caption{
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+th,
+td{
+    border: 1px solid #dbe3f0;
+    padding: 12px;
+    text-align: left;
+}
+
+th{
+    background-color: #e8eefc;
+}
+
+footer{
+    padding: 0 0 26px;
+    text-align: center;
+    color: #475569;
+}
