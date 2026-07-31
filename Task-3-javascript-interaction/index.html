@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Order Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1> Order Form</h1>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="order-section">
+            <h2>Order Your Meal</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                    <small class="error-message" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    <small class="error-message" id="phoneError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="meal">Select Meal</label>
+                    <select id="meal" name="meal">
+                        <option value="">Choose a meal</option>
+                        <option value="Veg Rice Bowl">Veg Rice Bowl</option>
+                        <option value="Burger Combo">Burger Combo</option>
+                        <option value="Creamy Pasta">Creamy Pasta</option>
+                    </select>
+                    <small class="error-message" id="mealError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" name="address" rows="4" placeholder="Enter your address"></textarea>
+                    <small class="error-message" id="addressError"></small>
+                </div>
+
+                <button type="submit" class="submit-btn">Place Order</button>
+            </form>
+        </section>
+
+        <section class="summary-section">
+            <h2>Order Summary</h2>
+            <div id="summaryCard" class="summary-card empty-state">
+                <p>No order submitted yet. Fill the form and click "Place Order".</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
