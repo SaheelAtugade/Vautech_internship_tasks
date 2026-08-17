@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+a {
+    text-decoration: none;
+}
+
+header,
+main {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 0;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #505050;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f97316;
+}
+
+main {
+    display: grid;
+    gap: 24px;
+    padding-bottom: 32px;
+}
+
+section {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+#home {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#home > div {
+    width: 50%;
+}
+
+#home img {
+    width: 50%;
+}
+
+#home h2 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+#home p {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+}
+
+#home a {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #f97316;
+    color: #fff;
+    border-radius: 8px;
+}
+
+#plans h2,
+#features h2,
+#contact h2 {
+    margin-bottom: 18px;
+}
+
+#plans > div {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+#plans article {
+    flex: 1 1 220px;
+    padding: 18px;
+    background: #f3f3f3;
+    border-left: 4px solid #f97316;
+    border-radius: 10px;
+}
+
+#features > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+#features article {
+    padding: 18px;
+    background: #f3f3f3;
+    color: black;
+    border-radius: 10px;
+}
+
+#contact ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+#contact a {
+    color: #f97316;
+}
+
+@media (max-width: 768px) {
+    header,
+    #home {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #home > div,
+    #home img {
+        width: 100%;
+    }
+
+    #features > div {
+        grid-template-columns: 1fr;
+    }
+}
