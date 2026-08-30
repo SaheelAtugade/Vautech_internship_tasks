@@ -53,3 +53,25 @@
     }
   }
 }
+
+@media (max-width: 768px){
+  .card{
+    width: 100%;
+
+    h2{
+      font-size: 1.3rem;
+    }
+
+    p{
+      font-size: 0.95rem;
+    }
+
+    .btn-group{
+      flex-direction: column;
+
+      button{
+        width: 100%;
+      }
+    }
+  }
+}
