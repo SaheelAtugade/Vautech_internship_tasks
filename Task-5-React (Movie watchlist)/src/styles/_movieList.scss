@@ -1,0 +1,11 @@
+@use "./variable" as *;
+.movie-list{
+    height: 100%;
+    width: 100%;
+    padding-inline: 8rem;
+    padding-bottom: 10rem;  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}

@@ -1,0 +1,17 @@
+ @use "./variable" as *;
+
+ button{
+        background-color: $primary;
+        color: $dark;
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: capitalize;
+        border: none;
+        padding: 0.5em 1em;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:active{
+            scale:0.97;
+        }
+    }
