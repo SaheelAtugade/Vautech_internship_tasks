@@ -9,7 +9,7 @@ const expenseRouter = require('./routes/expense.route')
 const budgetRouter = require('./routes/budget.route')
 
 app.use(cors({
-    origin: "/api",
+    origin: "http://localhost:5173",
     credentials: true,
   }))
 app.use(express.json())
