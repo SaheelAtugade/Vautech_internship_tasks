@@ -2,15 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 
 import AuthForm from "../components/AuthForm";
 import { useAuth } from "../hooks/useAuth";
+import { useEffect } from "react";
 
 const Register = () => {
-  const {
-    register,
-    loading,
-    error,
-  } = useAuth();
+  const { register, loading, error, clearError } = useAuth();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    clearError();
+  }, []);
 
   const handleRegister = async (formData) => {
     try {
@@ -25,11 +26,8 @@ const Register = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
       <div className="w-full max-w-md">
-
         <div className="mb-6 text-center">
-          <h1 className="text-3xl font-bold text-slate-900">
-            Expense Tracker
-          </h1>
+          <h1 className="text-3xl font-bold text-slate-900">Expense Tracker</h1>
 
           <p className="mt-2 text-sm text-slate-500">
             Start managing your expenses
@@ -62,7 +60,6 @@ const Register = () => {
             </Link>
           </p>
         </div>
-
       </div>
     </div>
   );

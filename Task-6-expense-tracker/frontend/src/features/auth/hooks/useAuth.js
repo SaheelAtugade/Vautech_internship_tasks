@@ -64,6 +64,10 @@ export const useAuth = () => {
     }
   }
 
+  const clearError = ()=>{
+    setError(null)
+  }
+
   return {
     register,
     login,
@@ -71,6 +75,7 @@ export const useAuth = () => {
     fetchUser,
     loading,
     error,
-    user
+    user,
+    clearError
   }
 };
