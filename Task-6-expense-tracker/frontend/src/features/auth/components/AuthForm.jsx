@@ -32,8 +32,7 @@ const AuthForm = ({ type, onSubmit, loading, error }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Name - Register only */}
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
       {!isLogin && (
         <div>
           <label
@@ -51,12 +50,11 @@ const AuthForm = ({ type, onSubmit, loading, error }) => {
             onChange={handleChange}
             placeholder="Enter your name"
             required
-            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 sm:px-4"
           />
         </div>
       )}
 
-      {/* Email */}
       <div>
         <label
           htmlFor="email"
@@ -73,11 +71,10 @@ const AuthForm = ({ type, onSubmit, loading, error }) => {
           onChange={handleChange}
           placeholder="Enter your email"
           required
-          className="w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 sm:px-4"
         />
       </div>
 
-      {/* Password */}
       <div>
         <label
           htmlFor="password"
@@ -94,22 +91,20 @@ const AuthForm = ({ type, onSubmit, loading, error }) => {
           onChange={handleChange}
           placeholder="Enter your password"
           required
-          className="w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 sm:px-4"
         />
       </div>
 
-      {/* Error */}
       {error && (
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
           {error}
         </p>
       )}
 
-      {/* Submit */}
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-lg bg-blue-600 px-4 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
       >
         {loading ? "Please wait..." : isLogin ? "Login" : "Create Account"}
       </button>

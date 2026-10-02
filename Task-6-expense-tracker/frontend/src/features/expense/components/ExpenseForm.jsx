@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { useExpenses } from "../hooks/useExpenses";
 
 const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
-  const {
-    createExpense,
-    updateExpense,
-    loading,
-    error,
-  } = useExpenses();
+  const { createExpense, updateExpense, loading, error } = useExpenses();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -17,7 +12,6 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
     note: "",
   });
 
-  // Fill form when editing an existing expense
   useEffect(() => {
     if (mode === "update" && expenseToUpdate) {
       setFormData({
@@ -71,22 +65,24 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
         date: "",
         note: "",
       });
+
       onSuccess?.();
     } catch {
-      // The hook stores the API error for this form to display.
+      // Hook stores the API error.
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border border-slate-200 bg-white p-6"
+      className="max-h-[90vh] overflow-y-auto rounded-xl border border-slate-200 bg-white p-5 sm:p-6"
     >
-      <h2 className="mb-5 text-lg font-semibold text-slate-900 capitalize">
+      <h2 className="mb-5 text-lg font-semibold capitalize text-slate-900">
         {mode} Expense
       </h2>
 
       <div className="grid gap-4 sm:grid-cols-2">
+        {/* Title */}
         <div>
           <label className="mb-1 block text-sm font-medium text-slate-700">
             Title
@@ -98,11 +94,12 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
             value={formData.title}
             onChange={handleChange}
             placeholder="e.g. Groceries"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-500 sm:px-4"
             required
           />
         </div>
 
+        {/* Amount */}
         <div>
           <label className="mb-1 block text-sm font-medium text-slate-700">
             Amount
@@ -115,11 +112,12 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
             onChange={handleChange}
             placeholder="e.g. 500"
             min="1"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-500 sm:px-4"
             required
           />
         </div>
 
+        {/* Category */}
         <div>
           <label className="mb-1 block text-sm font-medium text-slate-700">
             Category
@@ -129,7 +127,7 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 outline-none focus:border-blue-500"
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-blue-500 sm:px-4"
             required
           >
             <option value="">Select category</option>
@@ -142,6 +140,7 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
           </select>
         </div>
 
+        {/* Date */}
         <div>
           <label className="mb-1 block text-sm font-medium text-slate-700">
             Date
@@ -152,11 +151,12 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
             name="date"
             value={formData.date}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-500 sm:px-4"
             required
           />
         </div>
 
+        {/* Note */}
         <div className="sm:col-span-2">
           <label className="mb-1 block text-sm font-medium text-slate-700">
             Note (optional)
@@ -168,13 +168,13 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
             onChange={handleChange}
             placeholder="e.g. Monthly grocery shopping"
             rows="3"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-blue-500"
+            className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-blue-500 sm:px-4"
           />
         </div>
       </div>
 
       {error && (
-        <p className="mt-4 text-sm text-red-600">
+        <p className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
           {error}
         </p>
       )}
@@ -182,7 +182,7 @@ const ExpenseForm = ({ mode, expenseToUpdate, onSuccess }) => {
       <button
         type="submit"
         disabled={loading}
-        className="mt-5 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-5 w-full rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       >
         {loading
           ? mode === "update"

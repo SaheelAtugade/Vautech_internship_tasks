@@ -6,12 +6,16 @@ const Expense = () => {
   const [expenseToUpdate, setExpenseToUpdate] = useState(null);
   const [modal, setModal] = useState(false);
   const [mode, setMode] = useState("add");
+
   const toggleModal = () => {
     setModal((isOpen) => !isOpen);
   };
+
   const { expenses, loading, error, getExpenses, deleteExpense } =
     useExpenses();
+
   const today = new Date();
+
   const currentMonthExpenses = expenses.filter((expense) => {
     const expenseDate = new Date(expense.date);
 
@@ -20,6 +24,7 @@ const Expense = () => {
       expenseDate.getFullYear() === today.getFullYear()
     );
   });
+
   const totalSpending = currentMonthExpenses.reduce(
     (total, expense) => total + expense.amount,
     0,
@@ -42,24 +47,25 @@ const Expense = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <div className="mx-auto max-w-6xl">
+    <div className="min-h-screen bg-slate-50 p-4 sm:p-6">
+      <div className="mx-auto w-full max-w-6xl">
         {/* Page Heading */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Expenses</h1>
+            <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
+              Expenses
+            </h1>
 
             <p className="mt-1 text-sm text-slate-500">
               Manage your daily expenses
             </p>
           </div>
 
-          {/* button to open modal */}
           <button
             onClick={openAddModal}
-            className="mt-5 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 sm:w-auto"
           >
-            Add expense
+            Add Expense
           </button>
         </div>
 
@@ -74,8 +80,8 @@ const Expense = () => {
 
         {/* Loading State */}
         {loading && (
-          <div className="rounded-xl border border-slate-200 bg-white p-8 text-center">
-            <p className="text-slate-500">Loading expenses...</p>
+          <div className="rounded-xl border border-slate-200 bg-white p-6 text-center sm:p-8">
+            <p className="text-sm text-slate-500">Loading expenses...</p>
           </div>
         )}
 
@@ -88,7 +94,7 @@ const Expense = () => {
 
         {/* Empty State */}
         {!loading && !error && expenses?.length === 0 && (
-          <div className="rounded-xl border border-slate-200 bg-white p-10 text-center">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 text-center sm:p-10">
             <h2 className="text-lg font-semibold text-slate-900">
               No expenses yet
             </h2>
@@ -99,7 +105,7 @@ const Expense = () => {
 
             <button
               onClick={openAddModal}
-              className="mt-5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              className="mt-5 w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 sm:w-auto"
             >
               + Add Expense
             </button>
@@ -109,57 +115,67 @@ const Expense = () => {
         {/* Expense List */}
         {!loading && !error && expenses?.length > 0 && (
           <div className="rounded-xl border border-slate-200 bg-white">
-            <div className="border-b border-slate-200 p-5">
-              <div className="flex items-center justify-between gap-4">
+            {/* List Header */}
+            <div className="border-b border-slate-200 p-4 sm:p-5">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <h2 className="font-semibold text-slate-900">Your Expenses</h2>
+
                 <p className="text-sm font-semibold text-slate-900">
                   This Month: Rs. {totalSpending.toLocaleString("en-IN")}
                 </p>
               </div>
             </div>
 
+            {/* Expenses */}
             <div className="divide-y divide-slate-200">
               {expenses.map((expense) => (
                 <div
                   key={expense._id}
-                  className="flex items-center justify-between p-5"
+                  className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5"
                 >
-                  <div>
-                    <h3 className="font-medium text-slate-900">
+                  {/* Expense Information */}
+                  <div className="min-w-0">
+                    <h3 className="truncate font-medium text-slate-900">
                       {expense.title}
                     </h3>
 
                     <p className="mt-1 text-sm text-slate-500">
-                      {expense.category} - {new Date(expense.date).toLocaleDateString("en-IN")}
+                      {expense.category} -{" "}
+                      {new Date(expense.date).toLocaleDateString("en-IN")}
                     </p>
 
                     {expense.note && (
-                      <p className="mt-1 text-sm text-slate-500">{expense.note}</p>
+                      <p className="mt-1 wrap-break-word text-sm text-slate-500">
+                        {expense.note}
+                      </p>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-5">
+                  {/* Amount + Actions */}
+                  <div className="flex items-center justify-between gap-4 sm:justify-end">
                     <p className="font-semibold text-slate-900">
-                      ₹{expense.amount}
+                      ₹{expense.amount.toLocaleString("en-IN")}
                     </p>
 
-                    <button
-                      onClick={() => {
-                        setExpenseToUpdate(expense);
-                        setMode("update");
-                        toggleModal();
-                      }}
-                      className="text-sm font-medium text-blue-600 hover:text-blue-700"
-                    >
-                      Edit
-                    </button>
+                    <div className="flex items-center gap-4">
+                      <button
+                        onClick={() => {
+                          setExpenseToUpdate(expense);
+                          setMode("update");
+                          toggleModal();
+                        }}
+                        className="text-sm font-medium text-blue-600 hover:text-blue-700"
+                      >
+                        Edit
+                      </button>
 
-                    <button
-                      onClick={() => handleDelete(expense._id)}
-                      className="text-sm font-medium text-red-600 hover:text-red-700"
-                    >
-                      Delete
-                    </button>
+                      <button
+                        onClick={() => handleDelete(expense._id)}
+                        className="text-sm font-medium text-red-600 hover:text-red-700"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
