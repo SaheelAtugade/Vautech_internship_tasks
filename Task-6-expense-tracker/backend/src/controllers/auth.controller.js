@@ -51,7 +51,10 @@ async function registerController(req, res) {
     },
   );
   //set token in cookies
-  res.cookie("jwt_token", token);
+  res.cookie("jwt_token", token, {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+  });
 
   //success response
   res.status(201).json({
@@ -106,7 +109,10 @@ async function loginController(req, res) {
     },
   );
   //set token to cookies
-  res.cookie("jwt_token", token);
+  res.cookie("jwt_token", token, {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+  });
 
   //success response
   res.status(200).json({
@@ -160,15 +166,15 @@ async function getMeController(req, res) {
 
 //logout controller
 async function logoutController(req, res) {
-  res.clearCookie("jwt_token")
+  res.clearCookie("jwt_token");
   return res.status(200).json({
-    message: "User logged out successfully..."
-  })
+    message: "User logged out successfully...",
+  });
 }
 
 module.exports = {
   registerController,
   loginController,
   getMeController,
-  logoutController
+  logoutController,
 };
