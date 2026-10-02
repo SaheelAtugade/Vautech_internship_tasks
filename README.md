@@ -28,3 +28,13 @@ This repository contains the web development tasks completed during the Vautech 
 - Built a movie watchlist app using React and Vite
 - Added features to add, remove, and mark movies as watched
 - Stored movie data with localStorage
+
+### 6. Full-Scale Web Application
+- Developed a full-stack expense management application
+- Added features to record and manage expenses
+- Implemented spending tracking and monthly budget management
+- Built a clean and interactive user interface using React
+- Developed REST APIs and integrated the frontend with the backend
+- Displayed expense records dynamically
+- Uploaded the complete source code to GitHub
+- Deployed the application online
