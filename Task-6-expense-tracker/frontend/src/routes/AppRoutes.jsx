@@ -5,6 +5,7 @@ import Login from "../features/auth/pages/Login";
 import Register from "../features/auth/pages/Register";
 import Expense from "../features/expense/pages/Expense";
 import Budget from "../features/budget/pages/Budget";
+import Reports from "../features/report/pages/reports";
 
 const AppRoutes = createBrowserRouter([
   // Public routes
@@ -33,6 +34,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: "budget",
         element: <Budget/>,
+      },
+      {
+        path: "report",
+        element: <Reports/>,
       }
     ],
   },

@@ -1,4 +1,4 @@
-import { useExpenseContext } from "../expenseContext"
+import { useExpenseContext } from "../ExpenseContext"
 import { createExpenseApi, deleteExpenseApi, getExpenseApi, updateExpenseApi } from "../services/expense.api"
 
 export const useExpenses = ()=>{

@@ -48,6 +48,10 @@ const Navbar = () => {
             Budget
           </NavLink>
 
+          <NavLink to="/report" className={navLinkClass}>
+            Reports
+          </NavLink>
+
           <button
             onClick={handleLogout}
             className="text-sm font-medium text-red-600 transition-colors hover:text-red-700"
