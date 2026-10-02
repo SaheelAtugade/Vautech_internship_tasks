@@ -17,6 +17,14 @@ app.use("/api/expense", expenseRouter)
 app.use("/api/budget", budgetRouter)
 app.use(express.static("./public"))
 
+// health check route = to setup an endpoint to prevent render sleep mode
+app.get("/health", (req, res)=>{
+  res.status(200).json({
+    message: "OK"
+  })
+})
+
+// wildcard route to serve index.html for any unmatched routes
 app.use("*name",(req, res)=>{
   res.sendFile(path.join(__dirname,"..","/public/index.html"))
 })
